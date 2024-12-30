@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({Key? key, required this.image}) : super(key: key);
+  const CustomBookImage({Key? key, required this.image,}) : super(key: key);
 
   final String image;
   @override
@@ -14,6 +14,7 @@ class CustomBookImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: image,
+          errorWidget:(context, url, error) => Icon(Icons.error) ,
         ),
       ),
     );
