@@ -7,11 +7,11 @@ import 'custom_appbar.dart';
 import 'featured_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  const HomeViewBody({super.key, });
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return  CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Column(
@@ -25,7 +25,7 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'Best Seller',
+                  'Newest books',
                   style: Styles.textStyle18,
                 ),
               ),

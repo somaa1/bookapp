@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../data/book_model/book_model.dart';
+import '../../../../core/book_model/book_model.dart';
 import '../../data/repo/home_repo.dart';
 
 part 'newest_book_state.dart';
@@ -12,7 +12,7 @@ class NewestBookCubit extends Cubit<NewestBookState> {
 
   Future<void>  newestBookBooks() async {
     emit(NewestBookLoading());
-    var result = await homeRepo.fetchFeaturedBooks();
+    var result = await homeRepo.fetchBestSellerBooks();
     result.fold(
       (failure) {
         emit(NewestBookFailure(errorMessage: failure.message));

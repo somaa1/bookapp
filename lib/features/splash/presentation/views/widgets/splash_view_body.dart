@@ -1,9 +1,10 @@
 import 'package:bookapp/constants.dart';
+import 'package:bookapp/core/utils/app_router.dart';
 import 'package:bookapp/core/utils/assets.dart';
 import 'package:bookapp/features/home/presentation/views/home_view.dart';
 import 'package:bookapp/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -21,9 +22,6 @@ late  Animation<Offset>  slidingAnimation;
     initSlidingAnimation();
     navigateToHome();
 }
-
-
-
 
 @override
   void dispose() {
@@ -54,11 +52,11 @@ late  Animation<Offset>  slidingAnimation;
 
   void navigateToHome() {
     Future.delayed(Duration(seconds: 2),() {
-      Get.to(() => const HomeView(),
-          // calculations
-          transition: Transition.fade,
-          duration: kTransactionDuration);
-
+      // Get.to(() => const HomeView(),
+      //     // calculations
+      //     transition: Transition.fade,
+      //     duration: kTransactionDuration);
+GoRouter.of(context).push(AppRouter.kHomeView);
     },);
   }
 }
