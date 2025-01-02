@@ -18,7 +18,6 @@ class BookListViewItem extends StatelessWidget {
           return ListView.builder(
             itemCount: state.bookModel.length,
             padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
                 padding:  const EdgeInsets.symmetric(vertical: 10),

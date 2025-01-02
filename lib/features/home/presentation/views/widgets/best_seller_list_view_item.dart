@@ -1,10 +1,9 @@
 import 'package:bookapp/core/utils/app_router.dart';
-import 'package:bookapp/features/home/data/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/assets.dart';
+import '../../../../../core/book_model/book_model.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 import 'custom_book_image.dart';
@@ -17,7 +16,7 @@ class BestSellerListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.kBookDetailsView),
+      onTap: () => GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: bookmodel),
       child: SizedBox(
         height: 120,
         child: Row(
@@ -52,21 +51,23 @@ class BestSellerListViewItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'free',
-                        style: Styles.textStyle20.copyWith(
-                          fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text(
+                          'free',
+                          style: Styles.textStyle18.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                      BookRating(
-                        rating:
-                            bookmodel.volumeInfo?.averageRating?.round() ?? 0,
-                        count: (bookmodel.volumeInfo?.ratingsCount ?? 0).toInt(),
-                      ),
-                    ],
+                        const Spacer(),
+                        BookRating(
+                          rating:
+                              bookmodel.volumeInfo?.averageRating?.round() ?? 0,
+                          count: (bookmodel.volumeInfo?.ratingsCount ?? 0).toInt(),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
