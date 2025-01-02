@@ -1,6 +1,6 @@
-import 'package:bookapp/features/home/data/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/book_model/book_model.dart';
 import '../../../../../core/utils/functions/launch_url.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -30,7 +30,7 @@ final BookModel bookModel;
                   launchCustomUr(context, bookModel.accessInfo?.webReaderLink!);
                 },
                 fontSize: 16,
-                text: 'Free Preview',
+                text: getText(bookModel),
                 backgroundColor: Color(0xffEF8262),
                 textColor: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -41,5 +41,14 @@ final BookModel bookModel;
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookmodell) {
+    if(bookmodell.volumeInfo?.previewLink == null) {
+return 'Not Available';
+    }else{
+      return 'Preview';
+    }
+
   }
 }
